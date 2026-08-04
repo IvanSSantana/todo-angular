@@ -1,0 +1,11 @@
+-- Instalar o Angular Global
+npm install -g @angular/cli
+
+-- Resolvendo problemas de execução
+npm config get prefix --> adicionar ao PATH do Windows
+
+-- Criar um projeto Angular
+ng new nome-projeto --routing=false --style=css --skip-tests --standalone --ssr=false --file-name-style-guide=2025 --defaults
+
+-- Executar 
+ng serve --open
