@@ -9,3 +9,9 @@ ng new nome-projeto --routing=false --style=css --skip-tests --standalone --ssr=
 
 -- Executar 
 ng serve --open
+
+-- Para criar componentes (não poder estar executando o projeto)
+ng generate component components/nome-component --skip-tests
+
+-- Criar serviço
+ng generate service services/nome-servico --skip-tests
