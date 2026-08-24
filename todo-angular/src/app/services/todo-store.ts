@@ -29,6 +29,17 @@ export class TodoStore {
     this.updateTodos([...this.todosState(), newTodo]);
   };
 
+  toggle(id: number): void {
+    const updatedTodos = this.todosState().map((todo) => {
+      todo.id == id ? {...todo, completed: !todo.completed} : todo;
+    });
+  };
+
+  remove(id: number): void {
+    const updatedTodos = this.todosState().filter((todo) => todo.id != id);
+    this.updateTodos(updatedTodos);
+  }
+
   private updateTodos(todos: Todo[]) : void {
     this.todosState.set(todos);
     localStorage.setItem(this.storageKey, JSON.stringify(todos));

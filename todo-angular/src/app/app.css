@@ -28,5 +28,29 @@ header {
 }
 
 h1 {
-    
+    margin: 0;
+    color: #0f172a;
+    font-size: clamp(2rem, 7vw, 3.25rem);
+    line-height: 1;
 }
+
+header p:last-child {
+    margin: 0.8rem 0 0;
+    color: #475569;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.25rem 0;
+}
+
+.stats span {
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    background: #fff1f2;
+    color: #9f1239;
+    font-size: 0.9rem;
+}
+

@@ -10,6 +10,7 @@ input {
     border: 1px solid #cbd5e1;
     border-radius: 0.75rem;
     font: inherit;
+    margin-bottom: 1rem;
 }
 
 input:focus {
