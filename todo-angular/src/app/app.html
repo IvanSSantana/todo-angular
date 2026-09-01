@@ -2,17 +2,55 @@
   <section class="todo-card">
     <header>
       <p class="eyebrow">Angular</p>
-  
       <h1>Lista de Tarefas</h1>
-      <p>Organize suas atividades e matenha os dadaos salvos no navegador.</p>
+      <p>Organize suas atividades e mantenha os dados salvos no navegador.</p>
     </header>
 
-    <app-todo-form (todoAdded)="store.add($event)" />
+    <app-todo-form (todoAdded)="store.add($event)"></app-todo-form>
+
+    <div class="stats" aria-label="Resumo das tarefas">
+      <span>Total: <strong>{{ store.total() }}</strong></span>
+      <span>Pendentes: <strong>{{ store.pending() }}</strong></span>
+      <span>Concluídas: <strong>{{ store.completed() }}</strong></span>
+    </div>
+
+    <div class="filter-bar">
+      <span class="filter-label">Exibir:</span>
+
+      <div class="filters" role="group" aria-label="Filtrar tarefas">
+        <button
+          type="button"
+          [class.active]="store.filter() === 'todas'"
+          [attr.aria-pressed]="store.filter() === 'todas'"
+          (click)="store.setFilter('todas')"
+        >
+          Todas
+        </button>
+
+        <button
+          type="button"
+          [class.active]="store.filter() === 'pendentes'"
+          [attr.aria-pressed]="store.filter() === 'pendentes'"
+          (click)="store.setFilter('pendentes')"
+        >
+          Pendentes
+        </button>
+
+        <button
+          type="button"
+          [class.active]="store.filter() === 'concluidas'"
+          [attr.aria-pressed]="store.filter() === 'concluidas'"
+          (click)="store.setFilter('concluidas')"
+        >
+          Concluídas
+        </button>
+      </div>
+    </div>
 
     <app-todo-list
-      [todos]="store.todos()"
+      [todos]="store.filteredTodos()"
       (todoToggled)="store.toggle($event)"
       (todoRemoved)="store.remove($event)"
-    />
+    ></app-todo-list>
   </section>
 </main>
