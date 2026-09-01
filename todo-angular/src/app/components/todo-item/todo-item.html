@@ -1,4 +1,4 @@
-<li class="todo-item" [class.completed ] = "todo().completed">
+<li class="todo-item" [class.completed] = "todo().completed">
     <label>
         <input type="checkbox"
         [checked]="todo().completed"
@@ -6,6 +6,6 @@
         <span>{{ todo().title }}</span>
     </label>
     <button type="button" 
-    [attr.aria-label]=" 'Excluir a tarefa' + todo().title"
+    [attr.aria-label]="'Excluir a tarefa ' + todo().title"
     (click)="todoRemoved.emit(todo().id)">Excluir</button>
 </li>
