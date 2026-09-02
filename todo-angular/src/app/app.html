@@ -17,47 +17,46 @@
     <div class="controls-row">
       <div class="filter-bar">
         <span class="filter-label">Exibir:</span>
+
         <div class="filters" role="group" aria-label="Filtrar tarefas">
           <button
             type="button"
             [class.active]="store.filter() === 'todas'"
             [attr.aria-pressed]="store.filter() === 'todas'"
             (click)="store.setFilter('todas')"
-          >
-            Todas
-          </button>
+          >Todas</button>
+
           <button
             type="button"
             [class.active]="store.filter() === 'pendentes'"
             [attr.aria-pressed]="store.filter() === 'pendentes'"
             (click)="store.setFilter('pendentes')"
-          >
-            Pendentes
-          </button>
+          >Pendentes</button>
+
           <button
             type="button"
             [class.active]="store.filter() === 'concluidas'"
             [attr.aria-pressed]="store.filter() === 'concluidas'"
             (click)="store.setFilter('concluidas')"
-          >
-            Concluídas
-          </button>
+          >Concluídas</button>
         </div>
       </div>
-        <button
-          class="clear-button"
-          type="button"
-          [disabled]="store.completed() === 0"
-          (click)="store.clearCompleted()"
-        >
-          Excluir Concluídas
-        </button>
+
+      <button
+        class="clear-button"
+        type="button"
+        [disabled]="store.completed() === 0"
+        (click)="store.clearCompleted()"
+      >
+        Excluir concluídas
+      </button>
     </div>
 
     <app-todo-list
       [todos]="store.filteredTodos()"
       (todoToggled)="store.toggle($event)"
       (todoRemoved)="store.remove($event)"
+      (todoEdited)="store.editTitle($event)"
     ></app-todo-list>
   </section>
 </main>

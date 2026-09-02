@@ -5,3 +5,8 @@ export interface Todo {
 }
 
 export type TodoFilter = 'todas' | 'pendentes' | 'concluidas';
+
+export interface TodoEdit {
+    id: number;
+    title: string;
+}

@@ -1,5 +1,5 @@
 import { computed, signal, Injectable } from '@angular/core';
-import { Todo, TodoFilter } from '../models/todo';
+import { Todo, TodoEdit, TodoFilter } from '../models/todo';
 2
 @Injectable({
   providedIn: 'root',
@@ -66,6 +66,22 @@ export class TodoStore {
     const updatedTodos = this.todosState().filter((todo) => !todo.completed);
     this.updateTodos(updatedTodos);
   };
+
+  editTitle(edit: TodoEdit): void {
+    const normalizedTitle = edit.title.trim();
+
+    if (!normalizedTitle) {
+      return;
+    }
+
+    const updatedTodos = this.todosState().map((todo) =>
+      todo.id === edit.id
+        ? { ...todo, title: normalizedTitle }
+        : todo,
+    );
+
+    this.updateTodos(updatedTodos);
+  }
 
   private updateTodos(todos: Todo[]) : void {
     this.todosState.set(todos);

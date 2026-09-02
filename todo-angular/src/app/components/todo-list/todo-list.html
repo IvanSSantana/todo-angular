@@ -1,13 +1,14 @@
 @if (todos().length === 0) {
-<p class="empty-message">Nenhuma tarefa cadastrada.</p>
+  <p class="empty-message">Nenhuma tarefa para exibir neste filtro.</p>
 } @else {
-<ul class="todo-list">
-  @for (todo of todos(); track todo.id) {
-    <app-todo-item 
-      [todo]="todo" 
-      (todoToggled)="todoToggled.emit($event)" 
-      (todoRemoved)="todoRemoved.emit($event)" 
-    />
-  }
-</ul>
+  <ul class="todo-list">
+    @for (todo of todos(); track todo.id) {
+      <app-todo-item
+        [todo]="todo"
+        (todoToggled)="todoToggled.emit($event)"
+        (todoRemoved)="todoRemoved.emit($event)"
+        (todoEdited)="todoEdited.emit($event)"
+      ></app-todo-item>
+    }
+  </ul>
 }
