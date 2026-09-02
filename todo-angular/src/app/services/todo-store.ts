@@ -60,7 +60,12 @@ export class TodoStore {
   remove(id: number): void {
     const updatedTodos = this.todosState().filter((todo) => todo.id != id);
     this.updateTodos(updatedTodos);
-  }
+  };
+
+  clearCompleted(): void {
+    const updatedTodos = this.todosState().filter((todo) => !todo.completed);
+    this.updateTodos(updatedTodos);
+  };
 
   private updateTodos(todos: Todo[]) : void {
     this.todosState.set(todos);

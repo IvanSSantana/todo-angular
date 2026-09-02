@@ -14,37 +14,44 @@
       <span>Concluídas: <strong>{{ store.completed() }}</strong></span>
     </div>
 
-    <div class="filter-bar">
-      <span class="filter-label">Exibir:</span>
-
-      <div class="filters" role="group" aria-label="Filtrar tarefas">
-        <button
-          type="button"
-          [class.active]="store.filter() === 'todas'"
-          [attr.aria-pressed]="store.filter() === 'todas'"
-          (click)="store.setFilter('todas')"
-        >
-          Todas
-        </button>
-
-        <button
-          type="button"
-          [class.active]="store.filter() === 'pendentes'"
-          [attr.aria-pressed]="store.filter() === 'pendentes'"
-          (click)="store.setFilter('pendentes')"
-        >
-          Pendentes
-        </button>
-
-        <button
-          type="button"
-          [class.active]="store.filter() === 'concluidas'"
-          [attr.aria-pressed]="store.filter() === 'concluidas'"
-          (click)="store.setFilter('concluidas')"
-        >
-          Concluídas
-        </button>
+    <div class="controls-row">
+      <div class="filter-bar">
+        <span class="filter-label">Exibir:</span>
+        <div class="filters" role="group" aria-label="Filtrar tarefas">
+          <button
+            type="button"
+            [class.active]="store.filter() === 'todas'"
+            [attr.aria-pressed]="store.filter() === 'todas'"
+            (click)="store.setFilter('todas')"
+          >
+            Todas
+          </button>
+          <button
+            type="button"
+            [class.active]="store.filter() === 'pendentes'"
+            [attr.aria-pressed]="store.filter() === 'pendentes'"
+            (click)="store.setFilter('pendentes')"
+          >
+            Pendentes
+          </button>
+          <button
+            type="button"
+            [class.active]="store.filter() === 'concluidas'"
+            [attr.aria-pressed]="store.filter() === 'concluidas'"
+            (click)="store.setFilter('concluidas')"
+          >
+            Concluídas
+          </button>
+        </div>
       </div>
+        <button
+          class="clear-button"
+          type="button"
+          [disabled]="store.completed() === 0"
+          (click)="store.clearCompleted()"
+        >
+          Excluir Concluídas
+        </button>
     </div>
 
     <app-todo-list
